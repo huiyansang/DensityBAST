@@ -27,22 +27,6 @@ densityBASTunconditioned(
 )
 }
 \arguments{
-\item{MCMC}{An integer, the number of iterations for the MCMC}
-
-\item{BURNIN}{An integer, the number of initial iterations for the MCMC before recording output}
-
-\item{THIN}{An integer, specifies the thinning interval}
-
-\item{shape_hp}{Shape hyperparameter for the gamma prior. By default it is 1/2}
-
-\item{rate_hp}{Rate hyperparameter for the gamma prior. Ignored if data_prior = TRUE}
-
-\item{lambda_k_hp}{Hyperparameter for poisson prior on the number of clusters}
-
-\item{max_clusters}{An integer, the maximum number of clusters for each weak learner}
-
-\item{seed}{Optional, value to feed to R's set.seed function}
-
 \item{parallel_cores}{Optional; the number of cores to register for a parallel cluster or NULL to not run in parallel}
 
 \item{multinomial}{Optional; if TRUE then 'data' will be properly partitioned rather than bootstrapped for each weak learner}

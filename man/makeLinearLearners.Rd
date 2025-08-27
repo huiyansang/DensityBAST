@@ -4,16 +4,16 @@
 \alias{makeLinearLearners}
 \title{Title}
 \usage{
-makeLinearLearners(linenetwork_lpp, N_LEARNERS, MESH_REF, usepoisson = TRUE)
+makeLinearLearners(data_matrix, N_LEARNERS, MESH_REF, usepoisson = TRUE)
 }
 \arguments{
-\item{linenetwork_lpp}{A spatstat.linnet::lpp class containing the observed points and line geometry}
-
 \item{N_LEARNERS}{Number of weak learners}
 
 \item{MESH_REF}{Number of mesh reference nodes per weak learner}
 
 \item{usepoisson}{Boolean, whether to simulate reference nodes from a poisson point process instead of uniformly}
+
+\item{linenetwork_lpp}{A spatstat.linnet::lpp class containing the observed points and line geometry}
 }
 \description{
 Title
