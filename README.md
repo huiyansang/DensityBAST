@@ -21,4 +21,13 @@ The package provides Bayesian nonparametric density estimation tools for data su
 
 ```r
 # install.packages("remotes")
-remotes::install_github("<ORG>/<REPO>")
+remotes::install_github("huiyansang/DensityBAST")
+```
+
+## Contributors & Maintainers 
+
+This R package is developed and maintained by  
+Isaac Diaz-Ray, Huiyan Sang, and Maureen Min
+
+Please use GitHub Issues for bug reports and feature requests.
+For research-related inquiries, you may contact the maintainer directly.
