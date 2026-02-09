@@ -125,8 +125,7 @@ DensityBASTFit = function(boundary, data_matrix, hyperpars = NULL) {
     st_cast(to = "POINT")
 
 
-  if(is.null(hyperpars)) {
-    hyperpars = list(
+    hyperpars_default = list(
       N_LEARNERS = 16,
       MESH_REF = 300,
       MCMC = 2000,
@@ -147,8 +146,11 @@ DensityBASTFit = function(boundary, data_matrix, hyperpars = NULL) {
       detailed_output = TRUE,
       parallel_cores = NULL
     )
+   if(is.null(hyperpars)){
+     hyperpars = hyperpars_default
+   }else{
+    hyperpars=modifyList(hyperpars_default, hyperpars)
   }
-
   if(hyperpars$data_prior) {
     prior_info = bartStyleDataPrior(boundary,
                                     data_points,
