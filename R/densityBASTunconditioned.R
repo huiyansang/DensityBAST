@@ -180,7 +180,7 @@ densityBASTunconditioned = function(learners,
     BASTIONcluster = parallel::makeCluster(parallel_cores)
     doParallel::registerDoParallel(BASTIONcluster)
 
-    unconditionedOutputs = foreach::foreach(learner = 1:N_LEARNERS, .packages = "BASTION") %dorng% {
+    unconditionedOutputs = foreach::foreach(learner = 1:N_LEARNERS, .packages = c("sf",'dplyr')) %dorng% {
       densityBAST(learners_list[[learner]],
                   MCMC,
                   BURNIN,
