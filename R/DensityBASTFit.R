@@ -128,19 +128,19 @@ DensityBASTFit = function(boundary, data_matrix, hyperpars = NULL) {
   if(is.null(hyperpars)) {
     hyperpars = list(
       N_LEARNERS = 16,
-      MESH_REF = 100,
-      MCMC = 110,
-      BURNIN = 10,
-      THIN = 100,
-      shape_hp = 1,
-      rate_hp = 1,
-      lambda_k_hp = 10,
-      max_clusters = 20,
+      MESH_REF = 300,
+      MCMC = 2000,
+      BURNIN = 1000,
+      THIN = 1,
+      shape_hp = 1/16,
+      rate_hp = 1/16,
+      lambda_k_hp = 20,
+      max_clusters = 40,
       inv_empirical_var = 1/16,
       subsetting = "thinning",
-      thinning_ratio = 1/16,
+      thinning_ratio = 1,
       seed = NULL,
-      data_prior = FALSE,
+      data_prior = TRUE,
       normalized = FALSE,
       hot_init = FALSE,
       random_scan = FALSE,
@@ -153,15 +153,16 @@ DensityBASTFit = function(boundary, data_matrix, hyperpars = NULL) {
     prior_info = bartStyleDataPrior(boundary,
                                     data_points,
                                     N_LEARNERS = 1,
-                                    MESH_REF = 1000)
+                                    MESH_REF = 2000)
     hyperpars$inv_empirical_var = prior_info[3]
   }
 
   densityOutput = with(hyperpars, {
-    makeVoronoiMeshes(boundary = boundary,
+    makeDataVoronoiMeshes(boundary = boundary,
+                      data_matrix=data_matrix,
                       N_LEARNERS = N_LEARNERS,
                       MESH_REF = MESH_REF,
-                      max_area_ratio = 20) %>%
+                      max_area_ratio = NULL) %>%
       makeLearners(data = data_points) %>%
       densityBASTunconditioned(learners = .,
                                MCMC = MCMC,
